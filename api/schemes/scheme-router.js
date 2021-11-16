@@ -2,8 +2,20 @@
 const express = require('express')
 const { checkSchemeId, validateScheme, validateStep } = require('./scheme-middleware')
 const Schemes = require('./scheme-model.js')
-
 const router = express.Router()
+
+
+// Get all schemes sanity check
+// router.get('/', (req, res) => {
+//   Schemes.getSchemes()
+//     .then(schemes => {
+//       res.status(200).json(schemes)
+//     })
+//     .catch(error => {
+//       res.status(500).json({ error })
+//     })
+// })
+
 
 /**
   [GET] /api/schemes

@@ -1,14 +1,11 @@
-# Node DB3 Project Starter Code
-
-## Task 1: Project Setup and Submission
-
-Your assignment page on Canvas should contain instructions for submitting this project. If you are still unsure, reach out to School Staff.
-
 ## Task 2: Project Minimum Viable Product
 
 ### Database
 
 Open `data/schemes.db3` using a graphical tool like SQLite Studio and study the data inside the `schemes` and `steps` tables. The data can be reset at any time by executing `npm run seed`.
+
+
+
 
 ### API
 
@@ -20,6 +17,9 @@ Open `api/schemes/scheme-router.js` and study the specification for each endpoin
 - `[POST] /api/schemes`
 - `[POST] /api/schemes/:scheme_id/steps`
 
+
+
+
 ### Middleware Functions
 
 Write middleware functions in `api/schemes/scheme-middleware.js` following the instructions inside that file:
@@ -27,6 +27,9 @@ Write middleware functions in `api/schemes/scheme-middleware.js` following the i
 - [ ] `checkSchemeId`
 - [ ] `validateScheme`
 - [ ] `validateStep`
+
+
+
 
 ### Database Functions
 
@@ -37,6 +40,10 @@ Write db access functions in `api/schemes/scheme-model.js` following the instruc
 - [ ] `findSteps`
 - [ ] `add`
 - [ ] `addStep`
+
+
+
+
 
 #### Schemes Schema
 
@@ -54,6 +61,8 @@ Write db access functions in `api/schemes/scheme-model.js` following the instruc
 | step_number  | unsigned integer | required                                           |
 | instructions | string           | required                                           |
 
+
+
 ### Notes
 
 - Run tests locally executing `npm test`.
@@ -62,6 +71,9 @@ Write db access functions in `api/schemes/scheme-model.js` following the instruc
 - In your solution it is essential that you follow best practices and produce clean and professional results.
 - Schedule time to review, refine, and assess your work.
 - Perform basic professional polishing including spell-checking and grammar-checking on your work.
+
+
+
 
 ## Task 3: Multi Table Queries
 
