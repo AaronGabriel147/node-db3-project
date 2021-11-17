@@ -7,7 +7,7 @@ function getSchemes() {
 }
 
 
-// How do you eat an elelphant?
+// How do you eat an elephant?
 
 
 // EXERCISE A
@@ -33,7 +33,7 @@ ORDER BY sc.scheme_id ASC;               -- order in ascending order
 */
 
 
-// Psuedo-code:
+// Pseudo-code:
 // [x] 1. Grab all data from the scheme table
 // 2. Grab all st.step_id from the steps table, rename it to number_of_steps
 // 3. Count number_of_steps --> From docs: knex('users').groupBy('count')
@@ -42,17 +42,17 @@ ORDER BY sc.scheme_id ASC;               -- order in ascending order
 
 
 function find() {
-  db('schemes as sc')                                         // grab all schemes and renames
-  console.log('sc ------>', sc)
-  // .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')  // joins scheme_id on both tables
-  // .groupBy('sc.scheme_id')
-  // .orderBy('sc.scheme_id', 'ASC')
-  // .then(schemes => {
-  //   return schemes;
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  // });
+  return db('schemes as sc')                                         // grab all schemes and renames
+    // console.log('sc ------>', sc)
+    .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')  // joins scheme_id on both tables
+    .groupBy('sc.scheme_id')
+    .orderBy('sc.scheme_id', 'ASC')
+    .then(schemes => {
+      return schemes;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 
