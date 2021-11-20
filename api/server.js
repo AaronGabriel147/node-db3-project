@@ -23,9 +23,9 @@ server.get('/', (req, res) => { // Sanity check to connect to browser or HTTP cl
 })
 
 
-server.use('*', (req, res, next) => {
-    next({ status: 404, message: `******${req.method} ${req.originalUrl} not found! Inside 404 catch all.` })
-});
+// server.use('*', (req, res, next) => {
+//     next({ status: 404, message: `******${req.method} ${req.originalUrl} not found! Inside 404 catch all.` })
+// });
 
 
 server.use(errorHandling) // will trap "".catch/500 errors" happening above

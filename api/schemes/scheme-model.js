@@ -41,24 +41,27 @@ ORDER BY sc.scheme_id ASC;               -- order in ascending order
 // [x] 5. Sort the sc.scheme_id in ascending order
 
 
+// return db('schemes as sc')   // grab all schemes and renames
+// console.log('sc ------>', sc)
+// .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')  // joins scheme_id on both tables
+// .groupBy('sc.scheme_id')
+// .orderBy('sc.scheme_id', 'ASC')
+// .then(schemes => {
+//   return schemes;
+// })
+// .catch(err => {
+//   console.log(err);
+// });
+
+// Did with Zac// check each line you write......
 function find() {
-  return db('schemes as sc')                                         // grab all schemes and renames
-    // console.log('sc ------>', sc)
-    .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')  // joins scheme_id on both tables
+  return db('schemes as sc')
+    .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')
     .groupBy('sc.scheme_id')
+    .select('sc.*')
+    .count('st.step_id as number_of_steps') // In Knex the last thing you do is orderBy
     .orderBy('sc.scheme_id', 'ASC')
-    .then(schemes => {
-      return schemes;
-    })
-    .catch(err => {
-      console.log(err);
-    });
 }
-
-
-
-
-
 
 
 
@@ -134,8 +137,54 @@ SELECT
     }
     */
 
-function findById(scheme_id) { // EXERCISE B
+
+// STOPPED WORKING HERE on first line >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// if 1 or more models are inside 1 model, then it needs to be async
+async function findById(scheme_id) { // EXERCISE B
+  console.log('model')
+  const obj = await db('schemes as sc')
+    .leftJoin('steps as st', 'sc.scheme_id', 'st.scheme_id')
+    .where('sc.scheme_id', scheme_id)
+    .orderBy('st.step_number', 'ASC')
+  // return obj
+  // error handling
+  if (!obj.length) return null;
+
+  const scheme = {
+    "scheme_id": scheme_id,
+    "scheme_name": obj[0].scheme_name,
+    "steps": []
+  }
+
+  obj.forEach(step => {
+    scheme.steps.push({
+      "step_id": step.step_id,
+      "step_number": step.step_number,
+      "instructions": step.instructions
+    })
+  })
+
+
+  return {
+    ...scheme,
+    steps: scheme.steps.filter(step => step.step_id)
+  }
+
+
 }
+
+//  how to debug this when there is nothing no feedback, just a time out.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -43,6 +43,9 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+
+
+
 /*
   [GET] /api/schemes/2
 
@@ -66,13 +69,16 @@ router.get('/', (req, res, next) => {
 */
 router.get('/:scheme_id', checkSchemeId, (req, res, next) => {
   const { scheme_id } = req.params
-
+  console.log('route ----->') // does not make it to res
   Schemes.findById(scheme_id)
     .then(scheme => {
       res.json(scheme)
     })
     .catch(next)
 })
+
+
+
 
 /*
   [GET] /api/schemes/2/steps
